@@ -8,9 +8,9 @@ __author__ = "Joseph Drane"
 __version__ = "0.1.0"
 __license__ = "MIT"
 
-# windows:
-## Install pythong 2.7.13+
-### Open cmd.exe > pip install boto3
+# MacOS: pip freeze | grep boto3
+# PC   : pip freeze | findstr boto3
+# boto3==1.4.7
 import boto3
 import csv
 
@@ -41,8 +41,7 @@ def get_ec2(account_profile):
 # Runs get_ec2 for each profile
 def main():
     """ Main entry point of the app """
-    # aws_cli_profiles = ['Prod','SandBox','security','corp','master','transit','warehouse','iolap']
-    aws_cli_profiles = ['Prod','SandBox','security']
+    aws_cli_profiles = ['Prod','SandBox','security','Non-Prod']
     for profile in aws_cli_profiles:
         try:
             get_ec2(profile)
