@@ -20,7 +20,7 @@ AWS Tool For cross account scanning/reporting
 ## Check Version:
 - MacOS: pip freeze | grep boto3
 - PC   : pip freeze | findstr boto3
-`boto3==1.4.7`
+- The version this worked for me on is: `boto3==1.4.7`
 
 
 ## Credentials
