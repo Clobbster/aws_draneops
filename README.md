@@ -1,6 +1,7 @@
 # aws_draneops
 AWS Tool For cross account scanning/reporting
-- still building this app. just saving here to not lose work.
+- This tool I think is somewhere inbetween the current AWS CLI (2017) and the SDK.
+- I see this being something for those needing a bit more than the AWS CLI while maybe not wanting to spend the time making it in the SDK.
 
 
 ## Future Plans:
@@ -26,8 +27,9 @@ AWS Tool For cross account scanning/reporting
 ## Credentials
 - Uses the AWS CLI credentials file, located in your home directory inside a folder named .aws.
   - script detects the OS and logged in user, to find the path of your .aws credentials file.
-- The profile names in here must be in the script inside the main function.
+  - script then parses your .aws credentials file and scans all these accounts
 
 
-## Help Section
-- coming soon...
+## What's Next?
+- Any feature requests would be awesome!
+- I'd like to add some argument switches to make this a much more usable framework.
