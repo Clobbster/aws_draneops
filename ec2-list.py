@@ -47,11 +47,24 @@ def get_ec2(account_profile):
                 # I want to add arguments so we can pick what we want and what we dont.
                 # mylist = [instancename, instance.id, instance.instance_type, region]
                 mylist = [instancename, instance.private_ip_address, instance.state['Name']]
+                if sys.argv[1] == "encryption":
+				    volume_list = check_encryption(instance,ec2)
+				    mylist.extend(volume_list)
                 print mylist
-                wr.writerow(mylist)
+                wr.writerow(mylist)					
         myfile.close
 
-
+#checks if each drive attached to an instance is encrypted
+def check_encryption(instance,ec2):
+    volume_list = []
+    try:
+       for volume in instance.volumes.all():
+           check_volume = ec2.Volume(volume.id)
+           volume_info = "%s %s" % (volume.id,check_volume.encrypted)
+           volume_list.append(volume_info)
+    except:
+       print "no volume"
+    return volume_list
 def slash():
     slash = ''
     if platform.system() == 'Windows':
@@ -77,7 +90,7 @@ def get_awscli_profiles():
 # Runs get_ec2 for each profile
 def main():
     """ Main entry point of the app """
-    profiles = get_awscli_profiles()
+    profiles = profiles = get_awscli_profiles()
     for profile in profiles:
         try:
             get_ec2(profile)
