@@ -77,9 +77,9 @@ def get_awscli_profiles():
     home = expanduser("~")
     credentials = home + slash() + '.aws' + slash() + 'credentials'
     creds_file = open(credentials, 'r').read()
-    match = re.search('(\[.*\])', creds_file)
+    match = re.findall('(\[.*\])', creds_file)
     aws_profiles = [profile.replace('[', '').replace(']', '')
-                    for profile in match.groups()
+                    for profile in match
                     ]
     if aws_profiles:
         return aws_profiles
