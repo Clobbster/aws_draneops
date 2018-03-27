@@ -55,7 +55,6 @@ def get_ec2(account_profile):
                           ]
                 print mylist
                 wr.writerow(mylist)
-        myfile.close
 
 
 def slash():
